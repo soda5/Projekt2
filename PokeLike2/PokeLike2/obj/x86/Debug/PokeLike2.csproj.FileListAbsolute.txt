@@ -1,0 +1,12 @@
+C:\Users\Mischa\Desktop\PokeLike2\PokeLike2\PokeLike2\bin\WindowsGL\Debug\PokeLike2.exe
+C:\Users\Mischa\Desktop\PokeLike2\PokeLike2\PokeLike2\bin\WindowsGL\Debug\PokeLike2.pdb
+C:\Users\Mischa\Desktop\PokeLike2\PokeLike2\PokeLike2\bin\WindowsGL\Debug\MonoGame.Framework.dll
+C:\Users\Mischa\Desktop\PokeLike2\PokeLike2\PokeLike2\bin\WindowsGL\Debug\OpenTK.dll
+C:\Users\Mischa\Desktop\PokeLike2\PokeLike2\PokeLike2\obj\x86\Debug\PokeLike2.csprojResolveAssemblyReference.cache
+C:\Users\Mischa\Desktop\PokeLike2\PokeLike2\PokeLike2\obj\x86\Debug\PokeLike2.exe
+C:\Users\Mischa\Desktop\PokeLike2\PokeLike2\PokeLike2\obj\x86\Debug\PokeLike2.pdb
+C:\Users\Mischa\Desktop\PokeLike2\PokeLike2\PokeLike2\bin\WindowsGL\Debug\Content\Bisasam.png
+C:\Users\Mischa\Desktop\PokeLike2\PokeLike2\PokeLike2\bin\WindowsGL\Debug\Content\Map.bmp
+C:\Users\Mischa\Desktop\PokeLike2\PokeLike2\PokeLike2\bin\WindowsGL\Debug\Content\Peter.png
+C:\Users\Mischa\Desktop\PokeLike2\PokeLike2\PokeLike2\bin\WindowsGL\Debug\Content\Tileset2.png
+C:\Users\Mischa\Desktop\PokeLike2\PokeLike2\PokeLike2\bin\WindowsGL\Debug\Content\arial60.xnb
