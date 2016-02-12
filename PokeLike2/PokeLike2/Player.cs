@@ -19,6 +19,7 @@ namespace PokeLike2
         private BoxCollider collider;
 
         private int movementCooldown;
+        private bool inputSwitcher = false;
 
         private Map map;
 
@@ -45,22 +46,35 @@ namespace PokeLike2
             spriteBatch.Draw(sprite, Position * 32, Color.White);
         }
 
-        private void ProcessInput()
+        private void PauseInput()
         {
             KeyboardState keyState = Keyboard.GetState();
 
+            GameManager.IsPaused = true;
+
+            if (keyState.IsKeyDown(Keys.M))
+                inputSwitcher = false;
+        }
+
+        private void ProcessInput()
+        {
+            GameManager.IsPaused = false;
+            KeyboardState keyState = Keyboard.GetState();
+
             if (keyState.IsKeyDown(Keys.A) || keyState.IsKeyDown(Keys.Left))
-                if(InternalMovementCooldown())
+                if(MovementRules())
                     Move(new Vector2(-1, 0));
             if (keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
-                if (InternalMovementCooldown())
+                if (MovementRules())
                     Move(new Vector2(1, 0));
             if (keyState.IsKeyDown(Keys.W) || keyState.IsKeyDown(Keys.Up))
-                if (InternalMovementCooldown())
+                if (MovementRules())
                     Move(new Vector2(0, -1));
             if (keyState.IsKeyDown(Keys.S) || keyState.IsKeyDown(Keys.Down))
-                if (InternalMovementCooldown())
+                if (MovementRules())
                     Move(new Vector2(0, 1));
+            if (keyState.IsKeyDown(Keys.M) && GameManager.IsPaused == false)
+                inputSwitcher = true;
         }
 
         private void Move(Vector2 direction)
@@ -79,7 +93,11 @@ namespace PokeLike2
 
         public override void Update(GameTime gameTime)
         {
-            ProcessInput();
+            if (inputSwitcher == false)
+                ProcessInput();
+            else
+                PauseInput();
+             
             movementCooldown++;
         }
 
@@ -92,6 +110,14 @@ namespace PokeLike2
                 movementCooldown = 0;
                 return true;
             }
+        }
+
+        private bool MovementRules()
+        {
+            if (InternalMovementCooldown() && GameManager.IsPaused == false)
+                return true;
+            else
+                return false;
         }
     }
 }

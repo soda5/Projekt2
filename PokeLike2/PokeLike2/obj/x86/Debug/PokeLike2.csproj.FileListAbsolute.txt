@@ -10,3 +10,6 @@ C:\Users\Mischa\Desktop\PokeLike2\PokeLike2\PokeLike2\bin\WindowsGL\Debug\Conten
 C:\Users\Mischa\Desktop\PokeLike2\PokeLike2\PokeLike2\bin\WindowsGL\Debug\Content\Peter.png
 C:\Users\Mischa\Desktop\PokeLike2\PokeLike2\PokeLike2\bin\WindowsGL\Debug\Content\Tileset2.png
 C:\Users\Mischa\Desktop\PokeLike2\PokeLike2\PokeLike2\bin\WindowsGL\Debug\Content\arial60.xnb
+C:\Users\Mischa\Desktop\PokeLike2\PokeLike2\PokeLike2\bin\WindowsGL\Debug\Content\800x120_gray.png
+C:\Users\Mischa\Desktop\Projekt 2\PokeLike2\PokeLike2\obj\x86\Debug\PokeLike2.exe
+C:\Users\Mischa\Desktop\Projekt 2\PokeLike2\PokeLike2\obj\x86\Debug\PokeLike2.pdb

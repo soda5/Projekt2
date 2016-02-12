@@ -10,6 +10,8 @@ namespace PokeLike2
     {
         public static ContentManager Content;
 
+        public static bool IsPaused = false;
+
         private static List<GameObject> gameObjects = new List<GameObject>();
 
         public static void AddGameObject(GameObject gameObject)
