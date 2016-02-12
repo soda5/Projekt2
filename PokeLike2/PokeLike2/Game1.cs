@@ -56,6 +56,7 @@ namespace PokeLike2
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            InputManager.Update();
             GameManager.Update(gameTime);
             CollisionManager.Update();
             UIManager.Update(gameTime);

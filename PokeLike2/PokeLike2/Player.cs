@@ -34,6 +34,8 @@ namespace PokeLike2
             map = (Map)GameManager.FindGameObject("Map");
 
             collider = new BoxCollider((int)Position.X, (int)Position.Y, 1, 1);
+
+            InputManager.OnKeyPressed += OnKeyPressed;
         }
 
         private void LoadSprite(Texture2D image)
@@ -46,35 +48,27 @@ namespace PokeLike2
             spriteBatch.Draw(sprite, Position * 32, Color.White);
         }
 
-        private void PauseInput()
-        {
-            KeyboardState keyState = Keyboard.GetState();
-
-            GameManager.IsPaused = true;
-
-            if (keyState.IsKeyDown(Keys.M))
-                inputSwitcher = false;
-        }
-
-        private void ProcessInput()
+        private void OnKeyPressed(Keys key)
         {
             GameManager.IsPaused = false;
             KeyboardState keyState = Keyboard.GetState();
 
-            if (keyState.IsKeyDown(Keys.A) || keyState.IsKeyDown(Keys.Left))
+            if (key == Keys.A || key ==(Keys.Left))
                 if(MovementRules())
                     Move(new Vector2(-1, 0));
-            if (keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
+            if (key == Keys.D || key == (Keys.Right))
                 if (MovementRules())
                     Move(new Vector2(1, 0));
-            if (keyState.IsKeyDown(Keys.W) || keyState.IsKeyDown(Keys.Up))
+            if (key == Keys.W || key == (Keys.Up))
                 if (MovementRules())
                     Move(new Vector2(0, -1));
-            if (keyState.IsKeyDown(Keys.S) || keyState.IsKeyDown(Keys.Down))
+            if (key == Keys.S || key == (Keys.Down))
                 if (MovementRules())
                     Move(new Vector2(0, 1));
             if (keyState.IsKeyDown(Keys.M) && GameManager.IsPaused == false)
-                inputSwitcher = true;
+                GameManager.IsPaused = true;
+            else if (keyState.IsKeyDown(Keys.M) && GameManager.IsPaused == true)
+                GameManager.IsPaused = false;
         }
 
         private void Move(Vector2 direction)
@@ -93,11 +87,6 @@ namespace PokeLike2
 
         public override void Update(GameTime gameTime)
         {
-            if (inputSwitcher == false)
-                ProcessInput();
-            else
-                PauseInput();
-             
             movementCooldown++;
         }
 
