@@ -19,7 +19,6 @@ namespace PokeLike2
         private BoxCollider collider;
 
         private int movementCooldown;
-        private bool inputSwitcher = false;
 
         private Map map;
 
@@ -46,13 +45,11 @@ namespace PokeLike2
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(sprite, Position * 32, Color.White);
+
         }
 
         private void OnKeyPressed(Keys key)
         {
-            GameManager.IsPaused = false;
-            KeyboardState keyState = Keyboard.GetState();
-
             if (key == Keys.A || key ==(Keys.Left))
                 if(MovementRules())
                     Move(new Vector2(-1, 0));
@@ -65,10 +62,10 @@ namespace PokeLike2
             if (key == Keys.S || key == (Keys.Down))
                 if (MovementRules())
                     Move(new Vector2(0, 1));
-            if (keyState.IsKeyDown(Keys.M) && GameManager.IsPaused == false)
-                GameManager.IsPaused = true;
-            else if (keyState.IsKeyDown(Keys.M) && GameManager.IsPaused == true)
-                GameManager.IsPaused = false;
+            if (key == Keys.M && GameManager.GameState == "move")
+                GameManager.GameState = "menu";
+            else if (key == Keys.M && GameManager.GameState == "menu")
+                GameManager.GameState = "move";
         }
 
         private void Move(Vector2 direction)
@@ -103,10 +100,11 @@ namespace PokeLike2
 
         private bool MovementRules()
         {
-            if (InternalMovementCooldown() && GameManager.IsPaused == false)
+            if (InternalMovementCooldown() && GameManager.GameState == "move")
                 return true;
             else
                 return false;
         }
+
     }
 }

@@ -22,7 +22,7 @@ namespace PokeLike2
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if(GameManager.IsPaused == true)
+            if(GameManager.GameState == "menu")
                 spriteBatch.Draw(texture, Position, Color);
         }
 
