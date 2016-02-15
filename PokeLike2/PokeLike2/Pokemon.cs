@@ -40,5 +40,15 @@ namespace PokeLike2
         public override void Update(GameTime gameTime)
         {
         }
+
+        private void LvlUp()
+        {
+            double neededXp = 100 * Math.Pow((double)1.1f, (double)Lvl);
+            if (Xp > neededXp)
+            {
+                Xp -= neededXp;
+                Lvl++;
+            }
+        }
     }
 }

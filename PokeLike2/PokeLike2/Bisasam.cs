@@ -36,15 +36,5 @@ namespace PokeLike2
             //color = Color.Transparent;
             //FightManager.Fight(this);
         }
-
-        private void LvlUp()
-        {
-            double neededXp = 100 * Math.Pow((double)1.1f, (double)Lvl);
-            if (Xp > neededXp)
-            { 
-                Xp -= neededXp;
-                Lvl++;
-            }
-        }
     }
 }
