@@ -9,10 +9,11 @@ namespace PokeLike2
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        public static UITexture DialogBox;
+
         private Player player; 
         private Camera camera = new Camera();
         private UILabel healthBar;
-        private UITexture dialog;
 
         public Game1()
         {
@@ -44,7 +45,7 @@ namespace PokeLike2
 
             // UI
             healthBar = new UILabel(Fonts.Arial, new Vector2(camera.X, camera.Y), ("HP: " + Player.Health.ToString() + ""), 0.5f, Color.Black);
-            dialog = new UITexture(new Vector2(camera.X, camera.Y), Color.White, "800x120_gray");
+            DialogBox = new UITexture(new Vector2(camera.X, camera.Y), Color.White, "800x120_gray");
         }
 
         protected override void UnloadContent()
@@ -66,7 +67,7 @@ namespace PokeLike2
             int windowHeight = 15 * Constant.TileSize;
             healthBar.Position = new Vector2(camera.X + windowWidth * 0.81f, camera.Y); // Updatet die Position der Healthbar in Abhängigkeit zur Kamera
             healthBar.Text = "HP: " + Player.Health.ToString() + "";
-            dialog.Position = new Vector2(camera.X, camera.Y + windowHeight * 0.75f);
+            DialogBox.Position = new Vector2(camera.X, camera.Y + windowHeight * 0.75f);
             base.Update(gameTime);
         }
 

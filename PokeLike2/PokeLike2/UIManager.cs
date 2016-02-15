@@ -7,9 +7,6 @@ namespace PokeLike2
 {
     class UIManager
     {
-        public delegate void InputEventHandler();
-        public static event InputEventHandler ShowDialog;
-
         private static List<UIElement> uiElements = new List<UIElement>();
 
         public static void AddElement(UIElement element)

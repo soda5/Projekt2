@@ -11,19 +11,20 @@ namespace PokeLike2
     {
         public Vector2 Position;
         public Color Color = Color.Black;
-        private Texture2D texture;
+        public Texture2D Texture;
+       
 
         public UITexture(Vector2 position, Color color, string texture)
         {
             this.Position = position;
             this.Color = color;
-            this.texture = GameManager.LoadTexture2D(texture);
+            this.Texture = GameManager.LoadTexture2D(texture);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if(GameManager.GameState == "menu")
-                spriteBatch.Draw(texture, Position, Color);
+            if(Show)
+                spriteBatch.Draw(Texture, Position, Color);
         }
 
 

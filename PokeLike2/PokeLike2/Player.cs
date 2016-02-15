@@ -21,7 +21,7 @@ namespace PokeLike2
         private int movementCooldown;
 
         private Map map;
-
+        
         public Player(Vector2 position)
         {
             Name = "Player";
@@ -33,7 +33,8 @@ namespace PokeLike2
             map = (Map)GameManager.FindGameObject("Map");
 
             collider = new BoxCollider((int)Position.X, (int)Position.Y, 1, 1);
-
+            
+            InputManager.OnKeyDown += OnKeyDown;
             InputManager.OnKeyPressed += OnKeyPressed;
         }
 
@@ -48,7 +49,7 @@ namespace PokeLike2
 
         }
 
-        private void OnKeyPressed(Keys key)
+        private void OnKeyDown(Keys key)
         {
             if (key == Keys.A || key ==(Keys.Left))
                 if(MovementRules())
@@ -62,10 +63,20 @@ namespace PokeLike2
             if (key == Keys.S || key == (Keys.Down))
                 if (MovementRules())
                     Move(new Vector2(0, 1));
+        }
+
+        private void OnKeyPressed(Keys key)
+        {
             if (key == Keys.M && GameManager.GameState == "move")
+            {
                 GameManager.GameState = "menu";
+                Game1.DialogBox.Show = true;
+            }
             else if (key == Keys.M && GameManager.GameState == "menu")
+            {
                 GameManager.GameState = "move";
+                Game1.DialogBox.Show = false;
+            }
         }
 
         private void Move(Vector2 direction)
@@ -89,7 +100,7 @@ namespace PokeLike2
 
         private bool InternalMovementCooldown()
         {
-            if (movementCooldown < 15)
+            if (movementCooldown < 13)
                 return false;
             else
             {
