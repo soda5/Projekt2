@@ -44,8 +44,6 @@ namespace PokeLike2
                     PlayerAttacksEnemy(pokemon);
                     EnemyAttacksPlayer(pokemon);
                 }
-                Console.WriteLine(pokemon.Health);
-                Console.WriteLine(Player.Health);
             }
             else if (Player.Init < pokemon.Init)
             {
@@ -55,7 +53,7 @@ namespace PokeLike2
                     PlayerAttacksEnemy(pokemon);
                 }
             }
-            GameManager.DestroyGameObject(pokemon);
+                GameManager.DestroyGameObject(pokemon);
         }
     }
 }

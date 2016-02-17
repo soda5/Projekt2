@@ -82,6 +82,9 @@
     <Content Include="Content\Peter.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\pokemons.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Tileset2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
