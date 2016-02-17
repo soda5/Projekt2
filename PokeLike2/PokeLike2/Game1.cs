@@ -14,6 +14,7 @@ namespace PokeLike2
         private Player player; 
         private Camera camera = new Camera();
         private UILabel healthBar;
+        private Pokemon bisasam;
 
         public Game1()
         {
@@ -46,6 +47,11 @@ namespace PokeLike2
             // UI
             healthBar = new UILabel(Fonts.Arial, new Vector2(camera.X, camera.Y), ("HP: " + Player.Health.ToString() + ""), 0.5f, Color.Black);
             DialogBox = new UITexture(new Vector2(camera.X, camera.Y), Color.White, "800x120_gray");
+
+            //Pokemons
+            bisasam = new Pokemon(new Vector2( 3, 3 ), "Bisasam", "bisasam1", 20, 5, 5, 1, 0, 2, "plant", true);
+            bisasam = new Pokemon(new Vector2(30, 9 ), "Bisasam", "bisasam2", 20, 5, 5, 1, 0, 2, "plant", false);
+            bisasam = new Pokemon(new Vector2(30, 10), "Bisasam", "bisasam3", 20, 5, 5, 1, 0, 2, "plant", false);
         }
 
         protected override void UnloadContent()

@@ -82,7 +82,7 @@ namespace PokeLike2
         private void Move(Vector2 direction)
         {
             Vector2 targetPosition = Position + direction;
-            Tile targetTile = map.GetTile(targetPosition);
+            Tile targetTile = Map.GetTile(targetPosition);
 
             if (targetTile.IsPassable)
             {

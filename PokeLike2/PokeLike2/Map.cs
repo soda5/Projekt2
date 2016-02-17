@@ -9,13 +9,14 @@ namespace PokeLike2
 {
     class Map : GameObject
     {
+        public static Tile[,] Tiles;
+
         private int Height;
         private int Width;
         private int tileSize = Constant.TileSize;
 
         private Texture2D tileset;
 
-        private Tile[,] tiles;
 
         public Map()
         {
@@ -23,9 +24,9 @@ namespace PokeLike2
             LoadTextures();
         }
 
-        public Tile GetTile(Vector2 position)
+        public static Tile GetTile(Vector2 position)
         {
-            return tiles[(int)position.X, (int)position.Y];
+            return Tiles[(int)position.X, (int)position.Y];
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -34,7 +35,7 @@ namespace PokeLike2
             {
                 for (int j = 0; j < Width; j++)
                 {
-                    Tile tile = tiles[j, i];
+                    Tile tile = Tiles[j, i];
                     Vector2 position = new Vector2(j * tileSize, i * tileSize);
                     Rectangle sourceRect = new Rectangle(tile.PositionX * tileSize, tile.PositionY * tileSize, tileSize, tileSize);
                     spriteBatch.Draw(tileset, position, sourceRect, Color.White);
@@ -69,7 +70,7 @@ namespace PokeLike2
                 {
                     int index = y * Width + x;
                     Color tileType = data[index];
-                    tiles[x, y] = GetTileByType(tileType);
+                    Tiles[x, y] = GetTileByType(tileType);
                 }
             }
         }
@@ -102,7 +103,7 @@ namespace PokeLike2
         {
             Width = width;
             Height = height;
-            tiles = new Tile[Width, Height];
+            Tiles = new Tile[Width, Height];
         }
     }
 }
