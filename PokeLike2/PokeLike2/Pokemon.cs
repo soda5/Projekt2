@@ -60,8 +60,7 @@ namespace PokeLike2
 
         private void OnCollision()
         {
-            color = Color.Transparent;
-            //FightManager.Fight(this);
+            FightManager.Fight(this);
         }
 
         private void Move()

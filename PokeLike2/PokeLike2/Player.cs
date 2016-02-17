@@ -13,6 +13,9 @@ namespace PokeLike2
         public Vector2 Position;
 
         public static int Health = 100;
+        public static int Defense = 5;
+        public static int AttackPower = 10;
+        public static int Init = 5;
 
         private Texture2D sprite;
 

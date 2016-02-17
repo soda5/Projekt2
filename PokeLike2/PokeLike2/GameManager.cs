@@ -36,6 +36,11 @@ namespace PokeLike2
             return gameObjects.Find(g => g.Name == name);
         }
 
+        public static void DestroyGameObject(GameObject gameObject)
+        {
+            gameObjects.Remove(gameObject);
+        }
+
         public static Texture2D LoadTexture2D(string name)
         {
             return Content.Load<Texture2D>(name);
