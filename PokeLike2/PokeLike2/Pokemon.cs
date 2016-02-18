@@ -72,10 +72,12 @@ namespace PokeLike2
             {
                 movementCooldown++;
                 if (Movement && InternalMovementCooldown())
+                {
                     Position += RandomMove();
 
-                collider.X = (int)this.Position.X;
-                collider.Y = (int)this.Position.Y;
+                    collider.X = (int)Position.X;
+                    collider.Y = (int)Position.Y;
+                }
             }
         }
 
@@ -91,7 +93,7 @@ namespace PokeLike2
 
         private bool InternalMovementCooldown()
         {
-            if (movementCooldown < 13)
+            if (movementCooldown < 1300)
                 return false;
             else
             {

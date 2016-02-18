@@ -23,7 +23,12 @@ namespace PokeLike2
             if (pokemon.Health > 0)
             {
                 if (Player.Defense - pokemon.AttackPower * 2 < 0)
-                    Player.Health += Player.Defense - pokemon.AttackPower * 2;
+                {
+                    if (Player.Health + Player.Defense - pokemon.AttackPower * 2 > 0)
+                        Player.Health += Player.Defense - pokemon.AttackPower * 2;
+                    else
+                        Player.Health = 0;
+                }
                 else
                 {
                     Console.WriteLine("Die Angriffskraft des Gegners ist zu niedrig um Schaden zu verursachen.");// unvollständig
@@ -46,7 +51,6 @@ namespace PokeLike2
                 }
                 else
                     GameManager.Destroy(pokemon);
-
             }
             else if (Player.Init < pokemon.Init)
             {

@@ -27,27 +27,11 @@ namespace PokeLike2
             CollisionManager.AddCollider(this);
         }
 
-        //public void CheckCollision(BoxCollider other)
-        //{
-        //    if (X + Width <= other.X || other.X + other.Width <= X || Y + Height <= other.Y || other.Y + other.Height <= Y)
-        //        return;
-
-        //    if (OnCollision != null)
-        //        OnCollision();
-
-        //}
-
         public void CheckCollision(BoxCollider other)
         {
-            //if (X + Width < other.X || other.X + other.Width < X || Y + Height < other.Y || other.Y + other.Height < Y)
-            //    return;
-
-            //if (OnCollisionEnter != null)
-            //    OnCollisionEnter();
-
             bool collision = false;
 
-            if (X + Width < other.X || other.X + other.Width < X || Y + Height < other.Y || other.Y + other.Height < Y)
+            if (X + Width <= other.X || other.X + other.Width <= X || Y + Height <= other.Y || other.Y + other.Height <= Y)
                 collision = true;
             else
                 collision = false;
