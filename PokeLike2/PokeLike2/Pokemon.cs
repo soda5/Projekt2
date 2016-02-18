@@ -45,7 +45,7 @@ namespace PokeLike2
 
             collider = new BoxCollider((int)position.X, (int)position.Y, 1, 1);
 
-            collider.OnCollision += OnCollision;
+            collider.OnCollisionEnter += OnCollisionEnter;
         }
 
         public override void Update(GameTime gameTime)
@@ -58,7 +58,7 @@ namespace PokeLike2
             spriteBatch.Draw(Sprite, Position * Sprite.Width, color);
         }
 
-        private void OnCollision()
+        private void OnCollisionEnter()
         {
             FightManager.Fight(this);
         }

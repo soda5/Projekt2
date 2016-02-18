@@ -16,8 +16,11 @@ namespace PokeLike2
         public static int Defense = 5;
         public static int AttackPower = 10;
         public static int Init = 5;
+        public static int MaxHealth = 100;
 
         private Texture2D sprite;
+
+        private static UILabel deathMessage;
 
         private BoxCollider collider;
 
@@ -41,15 +44,27 @@ namespace PokeLike2
             InputManager.OnKeyPressed += OnKeyPressed;
         }
 
-        private void LoadSprite(Texture2D image)
-        {
-            sprite = image;
-        }
-
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(sprite, Position * 32, Color.White);
+        }
 
+        public override void Update(GameTime gameTime)
+        {
+            movementCooldown++;
+        }
+
+        public static void Death()
+        {
+            GameManager.GameState = "dead";
+            Game1.DialogBox.Show = true;
+
+            deathMessage = new UILabel(Fonts.Arial, new Vector2(10, 400), ("Du bist tot... Druecke N um das Spiel neuzustarten."), 0.4f, Color.Black);
+        }
+
+        private void LoadSprite(Texture2D image)
+        {
+            sprite = image;
         }
 
         private void OnKeyDown(Keys key)
@@ -80,6 +95,11 @@ namespace PokeLike2
                 GameManager.GameState = "move";
                 Game1.DialogBox.Show = false;
             }
+
+            if (key == Keys.N && GameManager.GameState == "dead")
+            {
+                RestartGame();
+            }
         }
 
         private void Move(Vector2 direction)
@@ -94,11 +114,6 @@ namespace PokeLike2
                 collider.X = (int)this.Position.X;
                 collider.Y = (int)this.Position.Y;
             }
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            movementCooldown++;
         }
 
         private bool InternalMovementCooldown()
@@ -118,6 +133,23 @@ namespace PokeLike2
                 return true;
             else
                 return false;
+        }
+
+        private void RestartGame()
+        {
+            GameManager.GameState = "move";
+            Game1.DialogBox.Show = false;
+            //deathMessage.Show = false;
+
+            UIManager.Destroy(deathMessage);
+
+            Position = new Vector2(17, 12);
+            
+            Health = 100;
+            MaxHealth = 100;
+            Defense = 5;
+            AttackPower = 10;
+            Init = 5;
         }
 
     }

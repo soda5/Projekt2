@@ -16,12 +16,25 @@ namespace PokeLike2
 
         public static void Update(GameTime gameTime)
         {
-            uiElements.ForEach(e => e.Update(gameTime));
+            //uiElements.ForEach(e => e.Update(gameTime)); //wenn ich weiß was ich tue! (keine exceptions bei Listenänderungen)
+            foreach (var item in uiElements)
+            {
+                item.Update(gameTime);
+            }
         }
 
         public static void Draw(SpriteBatch spriteBatch)
         {
-            uiElements.ForEach(e => e.Draw(spriteBatch));
+            //uiElements.ForEach(e => e.Draw(spriteBatch));
+            foreach (var item in uiElements)
+            {
+                item.Draw(spriteBatch);
+            }
+        }
+
+        public static void Destroy(UIElement element)
+        {
+            uiElements.Remove(element);
         }
     }
 }

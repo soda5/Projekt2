@@ -16,8 +16,6 @@ namespace PokeLike2
                 else
                     Console.WriteLine("Deine Angriffskraft ist zu niedrig um Schaden zu verursachen.");// unvollständig
             }
-            else
-                return; // Todesevent fehlt
         }
 
         public static void EnemyAttacksPlayer(Pokemon pokemon)
@@ -31,8 +29,6 @@ namespace PokeLike2
                     Console.WriteLine("Die Angriffskraft des Gegners ist zu niedrig um Schaden zu verursachen.");// unvollständig
                 }
             }
-            else
-                return; // Todesevent fehlt
         }
 
         public static void Fight(Pokemon pokemon)
@@ -44,6 +40,13 @@ namespace PokeLike2
                     PlayerAttacksEnemy(pokemon);
                     EnemyAttacksPlayer(pokemon);
                 }
+                if(Player.Health < 1)
+                {
+                    Player.Death();
+                }
+                else
+                    GameManager.Destroy(pokemon);
+
             }
             else if (Player.Init < pokemon.Init)
             {
@@ -52,8 +55,13 @@ namespace PokeLike2
                     EnemyAttacksPlayer(pokemon);
                     PlayerAttacksEnemy(pokemon);
                 }
+                if (Player.Health < 1)
+                {
+                    Player.Death();
+                }
+                else
+                    GameManager.Destroy(pokemon);
             }
-                GameManager.DestroyGameObject(pokemon);
         }
     }
 }

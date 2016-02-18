@@ -36,7 +36,7 @@ namespace PokeLike2
             return gameObjects.Find(g => g.Name == name);
         }
 
-        public static void DestroyGameObject(GameObject gameObject)
+        public static void Destroy(GameObject gameObject)
         {
             gameObjects.Remove(gameObject);
         }
