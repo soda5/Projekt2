@@ -17,6 +17,8 @@ namespace PokeLike2
         public delegate void CollisionEvent();
         public event CollisionEvent OnCollisionStay, OnCollisionEnter, OnCollisionExit;
 
+        private List<BoxCollider> collidingColliders = new List<BoxCollider>();
+
         public BoxCollider(int x, int y, int width, int height)
         {
             this.X = x;
@@ -36,31 +38,35 @@ namespace PokeLike2
             else
                 collision = false;
 
-            if (!collision && lastCollisionState == "none")
+            if(!collision)
             {
-                if (OnCollisionEnter != null)
+                if(!collidingColliders.Contains(other))
                 {
-                    lastCollisionState = "enter";
-                    OnCollisionEnter();
-                    Console.WriteLine(lastCollisionState);
+                    collidingColliders.Add(other);
+
+                    if (OnCollisionEnter != null)
+                    {
+                        OnCollisionEnter();
+                    }
+                }
+                else
+                {
+                    if (OnCollisionStay != null)
+                    {
+                        OnCollisionStay();
+                    }
                 }
             }
-            else if (!collision && lastCollisionState == "enter")
+            else
             {
-                if (OnCollisionStay != null)
+                if(collidingColliders.Contains(other))
                 {
-                    lastCollisionState = "stay";
-                    OnCollisionStay();
-                    Console.WriteLine(lastCollisionState);
-                }
-            }
-            else if (collision && lastCollisionState == "stay")
-            {
-                if (OnCollisionExit != null)
-                {
-                    lastCollisionState = "none";
-                    OnCollisionExit();
-                    Console.WriteLine(lastCollisionState);
+                    collidingColliders.Remove(other);
+
+                    if (OnCollisionExit != null)
+                    {
+                        OnCollisionExit();
+                    }
                 }
             }
         }

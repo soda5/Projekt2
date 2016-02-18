@@ -111,8 +111,8 @@ namespace PokeLike2
             {
                 Position += direction;
 
-                collider.X = (int)this.Position.X;
-                collider.Y = (int)this.Position.Y;
+                collider.X = (int)Position.X;
+                collider.Y = (int)Position.Y;
             }
         }
 

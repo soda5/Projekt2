@@ -26,7 +26,6 @@ namespace PokeLike2
         private Color color = Color.White;
         private int movementCooldown;
 
-
         public Pokemon(Vector2 position, string texture,string name, int health, int defense, int attackPower, int lvl, int xp, int init, string element, bool movement)
         {
             this.Position = position;
