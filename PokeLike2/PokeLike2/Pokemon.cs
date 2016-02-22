@@ -59,6 +59,7 @@ namespace PokeLike2
 
         private void OnCollisionEnter()
         {
+            if(GameManager.GameState == "move")
             FightManager.Fight(this);
         }
 
@@ -92,7 +93,7 @@ namespace PokeLike2
 
         private bool InternalMovementCooldown()
         {
-            if (movementCooldown < 1300)
+            if (movementCooldown < 13)
                 return false;
             else
             {

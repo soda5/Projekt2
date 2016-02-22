@@ -12,7 +12,7 @@ namespace PokeLike2
         public int Width;
         public int Height;
 
-        private string lastCollisionState = "none";
+        //private string lastCollisionState = "none";
 
         public delegate void CollisionEvent();
         public event CollisionEvent OnCollisionStay, OnCollisionEnter, OnCollisionExit;
@@ -45,16 +45,12 @@ namespace PokeLike2
                     collidingColliders.Add(other);
 
                     if (OnCollisionEnter != null)
-                    {
                         OnCollisionEnter();
-                    }
                 }
                 else
                 {
                     if (OnCollisionStay != null)
-                    {
                         OnCollisionStay();
-                    }
                 }
             }
             else
@@ -64,9 +60,7 @@ namespace PokeLike2
                     collidingColliders.Remove(other);
 
                     if (OnCollisionExit != null)
-                    {
                         OnCollisionExit();
-                    }
                 }
             }
         }

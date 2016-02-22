@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -58,8 +59,8 @@ namespace PokeLike2
         {
             GameManager.GameState = "dead";
             Game1.DialogBox.Show = true;
-
-            deathMessage = new UILabel(Fonts.Arial, new Vector2(10, 400), ("Du bist tot... Druecke N um das Spiel neuzustarten."), 0.4f, Color.Black);
+          
+            deathMessage = new UILabel(Fonts.Arial, new Vector2(Game1.DialogBox.Position.X +10, Game1.DialogBox.Position.Y +10), ("Du bist tot... Druecke N um das Spiel neuzustarten."), 0.4f, Color.Black);
         }
 
         private void LoadSprite(Texture2D image)
@@ -137,19 +138,23 @@ namespace PokeLike2
 
         private void RestartGame()
         {
-            GameManager.GameState = "move";
+            UIManager.Destroy(deathMessage);
+
             Game1.DialogBox.Show = false;
             //deathMessage.Show = false;
 
-            UIManager.Destroy(deathMessage);
-
             Position = new Vector2(17, 12);
-            
+
+            collider.X = (int)Position.X;
+            collider.Y = (int)Position.Y;
+
             Health = 100;
             MaxHealth = 100;
             Defense = 5;
             AttackPower = 10;
             Init = 5;
+
+            GameManager.GameState = "move";
         }
 
     }
