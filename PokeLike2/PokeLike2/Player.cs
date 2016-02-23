@@ -12,6 +12,9 @@ namespace PokeLike2
     class Player : GameObject
     {
         public Vector2 Position;
+        public SpriteAnimation SpriteAnimation;
+
+        public static List<Item> Items = new List<Item>();
 
         public static int Health = 100;
         public static int Defense = 5;
@@ -20,6 +23,8 @@ namespace PokeLike2
         public static int MaxHealth = 100;
 
         private Texture2D sprite;
+
+        private string SpriteAnimationDirection = "player_Down";
 
         private static UILabel deathMessage;
 
@@ -47,11 +52,15 @@ namespace PokeLike2
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(sprite, Position * 32, Color.White);
+            //spriteBatch.Draw(sprite, Position * 32, Color.White);
+            spriteBatch.Draw(SpriteAnimation.SpriteAtlas, Position * 32, SpriteAnimation.CurrentFrame.Bounds, Color.White);
         }
 
         public override void Update(GameTime gameTime)
         {
+            SpriteAnimation.PlayAnimation(SpriteAnimationDirection);
+            SpriteAnimation.Update(gameTime);
+
             movementCooldown++;
         }
 
@@ -71,17 +80,29 @@ namespace PokeLike2
         private void OnKeyDown(Keys key)
         {
             if (key == Keys.A || key ==(Keys.Left))
-                if(MovementRules())
+            {
+                SpriteAnimationDirection = "player_Left";
+                if (MovementRules())
                     Move(new Vector2(-1, 0));
+            }
             if (key == Keys.D || key == (Keys.Right))
+            {
+                SpriteAnimationDirection = "player_Right";
                 if (MovementRules())
                     Move(new Vector2(1, 0));
+            }
             if (key == Keys.W || key == (Keys.Up))
+            {
+                SpriteAnimationDirection = "player_Up";
                 if (MovementRules())
                     Move(new Vector2(0, -1));
+            }
             if (key == Keys.S || key == (Keys.Down))
+            {
+                SpriteAnimationDirection = "player_Down";
                 if (MovementRules())
                     Move(new Vector2(0, 1));
+            }
         }
 
         private void OnKeyPressed(Keys key)

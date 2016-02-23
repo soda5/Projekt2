@@ -15,6 +15,7 @@ namespace PokeLike2
         private Camera camera = new Camera();
         private UILabel healthBar;
         private Pokemon bisasam;
+        private SpriteAnimation trainer;
 
         public Game1()
         {
@@ -40,8 +41,12 @@ namespace PokeLike2
             GameManager.AddGameObject(map);
 
             player = new Player(new Vector2(17, 12));
-
             GameManager.AddGameObject(player);
+
+            trainer = new SpriteAnimation("player", Content.Load<Texture2D>("playerMovement"), Content.RootDirectory + "/playerMovement.xml");
+
+            player.SpriteAnimation = trainer;
+            player.SpriteAnimation.FrameDelay = 200;
 
             camera.SetTarget(player);
 
