@@ -50,7 +50,10 @@ namespace PokeLike2
                     Player.Death();
                 }
                 else
+                {
                     GameManager.Destroy(pokemon);
+                    CollisionManager.Destroy(pokemon.collider);
+                }
             }
             else if (Player.Init < pokemon.Init)
             {
@@ -64,7 +67,11 @@ namespace PokeLike2
                     Player.Death();
                 }
                 else
+                {
                     GameManager.Destroy(pokemon);
+                    CollisionManager.Destroy(pokemon.collider);
+                }
+
             }
         }
     }

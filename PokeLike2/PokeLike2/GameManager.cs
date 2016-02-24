@@ -13,6 +13,7 @@ namespace PokeLike2
         public static string GameState = "move";
 
         private static List<GameObject> gameObjects = new List<GameObject>();
+        private static List<GameObject> deletedGameObjects = new List<GameObject>();
 
         public static void AddGameObject(GameObject gameObject)
         {
@@ -23,6 +24,9 @@ namespace PokeLike2
         {
             foreach (var gameObject in gameObjects)
                 gameObject.Update(gameTime);
+
+            foreach (var gameObject in deletedGameObjects)
+                gameObjects.Remove(gameObject);
         }
 
         public static void Draw(SpriteBatch spriteBatch)
@@ -38,7 +42,7 @@ namespace PokeLike2
 
         public static void Destroy(GameObject gameObject)
         {
-            gameObjects.Remove(gameObject);
+            deletedGameObjects.Add(gameObject);
         }
 
         public static Texture2D LoadTexture2D(string name)

@@ -51,8 +51,9 @@
     <Compile Include="Map.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Pokemon.cs" />
+    <Compile Include="Potion.cs" />
     <Compile Include="SpriteAnimation.cs" />
-    <Compile Include="SpriteAnimationFrame.cs" />
+    <Compile Include="SpriteFrame.cs" />
     <Compile Include="Tile.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />

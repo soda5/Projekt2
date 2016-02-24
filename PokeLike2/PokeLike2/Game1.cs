@@ -16,6 +16,8 @@ namespace PokeLike2
         private UILabel healthBar;
         private Pokemon bisasam;
         private SpriteAnimation trainer;
+        private Potion potion;
+        private Potion potion2;
 
         public Game1()
         {
@@ -47,7 +49,7 @@ namespace PokeLike2
 
             player.SpriteAnimation = trainer;
             player.SpriteAnimation.FrameDelay = 200;
-
+            
             camera.SetTarget(player);
 
             // UI
@@ -58,6 +60,12 @@ namespace PokeLike2
             bisasam = new Pokemon(new Vector2( 3, 3 ), "Bisasam", "bisasam1", 220, 5, 95, 1, 0, 2, "plant", true);
             bisasam = new Pokemon(new Vector2(30, 9 ), "Bisasam", "bisasam2", 20, 5, 5, 1, 0, 2, "plant", false);
             bisasam = new Pokemon(new Vector2(30, 10), "Bisasam", "bisasam3", 20, 5, 5, 1, 0, 2, "plant", false);
+
+            //Items
+            potion = new Potion(new Vector2(1, 1), Content.RootDirectory + "/items.xml", "ArmorChainMail");
+            potion2 = new Potion(new Vector2(2, 2), Content.RootDirectory + "/items.xml", "ArmorChainmailGolden");
+            player.Items = potion;
+
         }
 
         protected override void UnloadContent()

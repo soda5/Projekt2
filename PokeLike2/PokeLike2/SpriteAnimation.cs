@@ -13,11 +13,12 @@ namespace PokeLike2
         public string Name { get; private set; }
         public int FrameDelay { get; set; }
         public Texture2D SpriteAtlas { get; private set; }
-        public SpriteAnimationFrame CurrentFrame { get; private set; }
+        public SpriteFrame CurrentFrame;// { get; private set; }
+        public SpriteFrame LastFrame;
 
         private string currentAnimationName;
-        private List<SpriteAnimationFrame> allFrames = new List<SpriteAnimationFrame>();
-        private List<SpriteAnimationFrame> currentFrames = new List<SpriteAnimationFrame>();
+        private List<SpriteFrame> allFrames = new List<SpriteFrame>();
+        private List<SpriteFrame> currentFrames = new List<SpriteFrame>();
         private int currentFrameCount;
         private float timer;
 
@@ -64,6 +65,7 @@ namespace PokeLike2
                     currentFrameCount = 0;
 
                 CurrentFrame = currentFrames[currentFrameCount];
+                LastFrame = CurrentFrame;
             }
         }
 
@@ -78,7 +80,7 @@ namespace PokeLike2
                     string frameName = xmlReader.GetAttribute("n");
                     if (frameName.Contains(Name))
                     {
-                        SpriteAnimationFrame animationFrame = new SpriteAnimationFrame();
+                        SpriteFrame animationFrame = new SpriteFrame();
                         animationFrame.Name = frameName;
                         animationFrame.Bounds.X = Convert.ToInt32(xmlReader.GetAttribute("x"));
                         animationFrame.Bounds.Y = Convert.ToInt32(xmlReader.GetAttribute("y"));

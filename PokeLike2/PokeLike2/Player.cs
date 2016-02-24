@@ -13,8 +13,7 @@ namespace PokeLike2
     {
         public Vector2 Position;
         public SpriteAnimation SpriteAnimation;
-
-        public static List<Item> Items = new List<Item>();
+        public Item Items;
 
         public static int Health = 100;
         public static int Defense = 5;
@@ -52,8 +51,9 @@ namespace PokeLike2
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            //spriteBatch.Draw(sprite, Position * 32, Color.White);
             spriteBatch.Draw(SpriteAnimation.SpriteAtlas, Position * 32, SpriteAnimation.CurrentFrame.Bounds, Color.White);
+
+            spriteBatch.Draw(Items.ItemAtlas, Items.Position * 32, Items.CurrentItem.Bounds, Color.White);
         }
 
         public override void Update(GameTime gameTime)
