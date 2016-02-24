@@ -26,7 +26,7 @@ namespace PokeLike2
         private Color color = Color.White;
         private int movementCooldown;
 
-        public Pokemon(Vector2 position, string texture,string name, int health, int defense, int attackPower, int lvl, int xp, int init, string element, bool movement)
+        public Pokemon(Vector2 position, string texture, string name, int health, int defense, int attackPower, int lvl, int xp, int init, string element, bool movement)
         {
             this.Position = position;
             this.Sprite = GameManager.Content.Load<Texture2D>(texture);
@@ -59,8 +59,8 @@ namespace PokeLike2
 
         private void OnCollisionEnter(BoxCollider other)
         {
-            if(GameManager.GameState == "move" && other.Type is Player )
-            FightManager.Fight(this);
+            if (GameManager.GameState == "move" && other.Type is Player)
+                FightManager.Fight(this);
         }
 
         private void Move()

@@ -13,10 +13,10 @@ namespace PokeLike2
         public int PositionY;
         public bool IsPassable;
 
-        public Tile(int tilesetX, int tilesetY, bool isPassable)
+        public Tile(int tileX, int tileY, bool isPassable)
         {
-            PositionX = tilesetX;
-            PositionY = tilesetY;
+            PositionX = tileX;
+            PositionY = tileY;
             IsPassable = isPassable;
         }
     }

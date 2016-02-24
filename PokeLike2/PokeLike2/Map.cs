@@ -11,15 +11,17 @@ namespace PokeLike2
     {
         public static Tile[,] Tiles;
 
-        private int Height;
-        private int Width;
-        private int tileSize = Constant.TileSize;
+        private int height;
+        private int width;
+        private int tileSize;
 
         private Texture2D tileset;
 
-
         public Map()
         {
+            height = Constant.MapHeight;
+            width = Constant.MapWidth;
+            tileSize = Constant.TileSize;
             Name = "Map";
             LoadTextures();
         }
@@ -31,9 +33,9 @@ namespace PokeLike2
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            for (int i = 0; i < Height; i++)
+            for (int i = 0; i < height; i++)
             {
-                for (int j = 0; j < Width; j++)
+                for (int j = 0; j < width; j++)
                 {
                     Tile tile = Tiles[j, i];
                     Vector2 position = new Vector2(j * tileSize, i * tileSize);
@@ -43,16 +45,16 @@ namespace PokeLike2
             }
         }
 
+        private void LoadTextures()
+        {
+            tileset = GameManager.LoadTexture2D("Tileset2");
+        }
+
         public void LoadMapFromImage(Texture2D image)
         {
             InitMapSize(Constant.MapWidth, Constant.MapHeight);
             Color[] colors = GetColorsFromImage(image);
             InitTiles(colors);
-        }
-
-        private void LoadTextures()
-        {
-            tileset = GameManager.LoadTexture2D("Tileset2");
         }
 
         private Color[] GetColorsFromImage(Texture2D image)
@@ -64,15 +66,22 @@ namespace PokeLike2
 
         private void InitTiles(Color[] data)
         {
-            for (int y = 0; y < Height; y++)
+            for (int y = 0; y < height; y++)
             {
-                for (int x = 0; x < Width; x++)
+                for (int x = 0; x < width; x++)
                 {
-                    int index = y * Width + x;
+                    int index = y * width + x;
                     Color tileType = data[index];
                     Tiles[x, y] = GetTileByType(tileType);
                 }
             }
+        }
+
+        private void InitMapSize(int width, int height)
+        {
+            this.width = width;
+            this.height = height;
+            Tiles = new Tile[this.width, this.height];
         }
 
         private Tile GetTileByType(Color color)
@@ -97,13 +106,6 @@ namespace PokeLike2
                 return new Tile(5, 8, false);
             else
                 return null;
-        }
-
-        private void InitMapSize(int width, int height)
-        {
-            Width = width;
-            Height = height;
-            Tiles = new Tile[Width, Height];
         }
     }
 }

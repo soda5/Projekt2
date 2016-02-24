@@ -13,8 +13,6 @@ namespace PokeLike2
         public int Height;
         public GameObject Type;
 
-        //private string lastCollisionState = "none";
-
         public delegate void CollisionEvent(BoxCollider other);
         public event CollisionEvent OnCollisionStay, OnCollisionEnter, OnCollisionExit;
 

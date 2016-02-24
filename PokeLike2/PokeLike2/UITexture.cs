@@ -12,7 +12,6 @@ namespace PokeLike2
         public Vector2 Position;
         public Color Color = Color.Black;
         public Texture2D Texture;
-       
 
         public UITexture(Vector2 position, Color color, string texture)
         {
@@ -26,8 +25,6 @@ namespace PokeLike2
             if(Show)
                 spriteBatch.Draw(Texture, Position, Color);
         }
-
-
     }
 }
 

@@ -23,7 +23,6 @@ namespace PokeLike2
 
                 GameManager.Destroy(this);
                 CollisionManager.Destroy(collider);
-
             }
         }
     }

@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace PokeLike2
 {
@@ -17,7 +16,6 @@ namespace PokeLike2
 
         public static void Update(GameTime gameTime)
         {
-            //uiElements.ForEach(e => e.Update(gameTime)); //wenn ich weiß was ich tue! (keine exceptions bei Listenänderungen)
             foreach (var item in uiElements)
             {
                 item.Update(gameTime);
@@ -26,7 +24,6 @@ namespace PokeLike2
 
         public static void Draw(SpriteBatch spriteBatch)
         {
-            //uiElements.ForEach(e => e.Draw(spriteBatch));
             foreach (var item in uiElements)
             {
                 item.Draw(spriteBatch);
