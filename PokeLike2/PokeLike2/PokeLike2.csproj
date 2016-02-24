@@ -38,6 +38,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Armor.cs" />
     <Compile Include="BoxCollider.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="CollisionManager.cs" />

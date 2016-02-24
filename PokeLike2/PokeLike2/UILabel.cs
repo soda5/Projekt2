@@ -29,7 +29,6 @@ namespace PokeLike2
                 spriteBatch.DrawString(Font, Text, Position, Color, 0f, Vector2.Zero, Scale, SpriteEffects.None, 0f);
         }
 
-
     }
 }
 

@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -13,7 +12,6 @@ namespace PokeLike2
     {
         public Vector2 Position;
         public SpriteAnimation SpriteAnimation;
-        public Item Items;
 
         public static int Health = 100;
         public static int Defense = 5;
@@ -53,7 +51,7 @@ namespace PokeLike2
         {
             spriteBatch.Draw(SpriteAnimation.SpriteAtlas, Position * 32, SpriteAnimation.CurrentFrame.Bounds, Color.White);
 
-            spriteBatch.Draw(Items.ItemAtlas, Items.Position * 32, Items.CurrentItem.Bounds, Color.White);
+           // spriteBatch.Draw(Items.ItemAtlas, Items.Position * 32, Items.CurrentItem.Bounds, Color.White);
         }
 
         public override void Update(GameTime gameTime)
@@ -68,7 +66,7 @@ namespace PokeLike2
         {
             GameManager.GameState = "dead";
             Game1.DialogBox.Show = true;
-          
+
             deathMessage = new UILabel(Fonts.Arial, new Vector2(Game1.DialogBox.Position.X +10, Game1.DialogBox.Position.Y +10), ("Du bist tot... Druecke N um das Spiel neuzustarten."), 0.4f, Color.Black);
         }
 
@@ -162,7 +160,6 @@ namespace PokeLike2
             UIManager.Destroy(deathMessage);
 
             Game1.DialogBox.Show = false;
-            //deathMessage.Show = false;
 
             Position = new Vector2(17, 12);
 

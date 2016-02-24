@@ -10,6 +10,8 @@ namespace PokeLike2
         SpriteBatch spriteBatch;
 
         public static UITexture DialogBox;
+        public static UILabel Message;
+
 
         private Player player; 
         private Camera camera = new Camera();
@@ -64,8 +66,6 @@ namespace PokeLike2
             //Items
             potion = new Potion(new Vector2(1, 1), Content.RootDirectory + "/items.xml", "ArmorChainMail");
             potion2 = new Potion(new Vector2(2, 2), Content.RootDirectory + "/items.xml", "ArmorChainmailGolden");
-            player.Items = potion;
-
         }
 
         protected override void UnloadContent()

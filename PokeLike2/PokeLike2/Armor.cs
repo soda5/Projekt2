@@ -6,16 +6,18 @@ using System.Text;
 
 namespace PokeLike2
 {
-    class Potion : Item
+    class Armor : Item
     {
-        public Potion(Vector2 position, string atlasPath, string name) : base (position, atlasPath, name)
+        public Armor(Vector2 position, string atlasPath, string name) : base (position, atlasPath, name)
         {
             collider.OnCollisionEnter += OnCollisionEnter;
         }
 
         private void OnCollisionEnter()
         {
-            Player.Health += 10;
+            Player.Defense += 1;
+
+            Game1.DialogBox.Show = true;
 
             GameManager.Destroy(this);
             CollisionManager.Destroy(collider);

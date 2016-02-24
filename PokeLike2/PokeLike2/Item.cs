@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Xml;
@@ -17,7 +16,7 @@ namespace PokeLike2
         public Texture2D ItemAtlas;
 
         public SpriteFrame CurrentItem;
-        public List<Item> ItemsToDraw = new List<Item>();
+        public List<SpriteFrame> ItemsToDraw = new List<SpriteFrame>();
 
         private List<SpriteFrame> allItems = new List<SpriteFrame>();
 
@@ -29,7 +28,6 @@ namespace PokeLike2
             ItemAtlas = GameManager.LoadTexture2D("Items");
 
             GameManager.AddGameObject(this);
-            Debug.WriteLine("erzeugt");
 
             collider = new BoxCollider((int)Position.X, (int)Position.Y, 1, 1);
 
@@ -41,6 +39,7 @@ namespace PokeLike2
         public void SetFrame(string name)
         {
             CurrentItem = allItems.Find(animationFrame => animationFrame.Name.Contains(name));
+            ItemsToDraw.Add(CurrentItem);
         }
 
         public void LoadFrame(string dataPath)
@@ -64,6 +63,14 @@ namespace PokeLike2
                         allItems.Add(animationFrame);
                     }
                 }
+            }
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            foreach (var item in ItemsToDraw)
+            {
+                spriteBatch.Draw(ItemAtlas, Position * 32, item.Bounds, Color.White);
             }
         }
     }
