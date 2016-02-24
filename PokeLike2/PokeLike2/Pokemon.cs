@@ -42,7 +42,7 @@ namespace PokeLike2
 
             GameManager.AddGameObject(this);
 
-            collider = new BoxCollider((int)position.X, (int)position.Y, 1, 1);
+            collider = new BoxCollider(this, (int)position.X, (int)position.Y, 1, 1);
 
             collider.OnCollisionEnter += OnCollisionEnter;
         }
@@ -57,9 +57,9 @@ namespace PokeLike2
             spriteBatch.Draw(Sprite, Position * Sprite.Width, color);
         }
 
-        private void OnCollisionEnter()
+        private void OnCollisionEnter(BoxCollider other)
         {
-            if(GameManager.GameState == "move")
+            if(GameManager.GameState == "move" && other.Type is Player )
             FightManager.Fight(this);
         }
 

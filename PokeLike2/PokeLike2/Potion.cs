@@ -13,12 +13,15 @@ namespace PokeLike2
             collider.OnCollisionEnter += OnCollisionEnter;
         }
 
-        private void OnCollisionEnter()
+        private void OnCollisionEnter(BoxCollider other)
         {
-            Player.Health += 10;
+            if(other.Type is Player)
+            {
+                Player.Health += 10;
 
-            GameManager.Destroy(this);
-            CollisionManager.Destroy(collider);
+                GameManager.Destroy(this);
+                CollisionManager.Destroy(collider);
+            }
         }
     }
 }

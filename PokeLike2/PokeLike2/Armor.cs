@@ -13,14 +13,18 @@ namespace PokeLike2
             collider.OnCollisionEnter += OnCollisionEnter;
         }
 
-        private void OnCollisionEnter()
+        private void OnCollisionEnter(BoxCollider other)
         {
-            Player.Defense += 1;
+            if(other.Type is Player)
+            {
+                Player.Defense += 1;
 
-            Game1.DialogBox.Show = true;
+                Game1.DialogBox.Show = true;
 
-            GameManager.Destroy(this);
-            CollisionManager.Destroy(collider);
+                GameManager.Destroy(this);
+                CollisionManager.Destroy(collider);
+
+            }
         }
     }
 }

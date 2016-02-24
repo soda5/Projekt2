@@ -41,7 +41,7 @@ namespace PokeLike2
 
             map = (Map)GameManager.FindGameObject("Map");
 
-            collider = new BoxCollider((int)Position.X, (int)Position.Y, 1, 1);
+            collider = new BoxCollider(this, (int)Position.X, (int)Position.Y, 1, 1);
             
             InputManager.OnKeyDown += OnKeyDown;
             InputManager.OnKeyPressed += OnKeyPressed;

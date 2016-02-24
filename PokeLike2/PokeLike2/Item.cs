@@ -29,7 +29,7 @@ namespace PokeLike2
 
             GameManager.AddGameObject(this);
 
-            collider = new BoxCollider((int)Position.X, (int)Position.Y, 1, 1);
+            collider = new BoxCollider(this, (int)Position.X, (int)Position.Y, 1, 1);
 
             LoadFrame(atlasPath);
 
