@@ -82,6 +82,9 @@
     <Content Include="Content\Items.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\items.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Map.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -84,7 +84,7 @@ namespace PokeLike2
                         animationFrame.Bounds.Y = Convert.ToInt32(xmlReader.GetAttribute("y"));
                         animationFrame.Bounds.Width = Convert.ToInt32(xmlReader.GetAttribute("width"));
                         animationFrame.Bounds.Height = Convert.ToInt32(xmlReader.GetAttribute("height"));
-
+                        
                         allFrames.Add(animationFrame);
                     }
                 }
