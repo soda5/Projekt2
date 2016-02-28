@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -17,7 +18,8 @@ namespace PokeLike2
         public static int Defense = 5;
         public static int AttackPower = 10;
         public static int Init = 5;
-        public static int MaxHealth = 100;
+        public static int Lvl = 1;
+        public static int Xp = 0;
 
         private Texture2D sprite;
 
@@ -167,13 +169,29 @@ namespace PokeLike2
             collider.Y = (int)Position.Y;
 
             Health = 100;
-            MaxHealth = 100;
             Defense = 5;
             AttackPower = 10;
             Init = 5;
+            Lvl = 1;
+            Xp = 0;
 
             GameManager.GameState = "move";
         }
 
+        public static void CheckAndDoLvlUp()
+        {
+            double neededXp = 100 * Math.Pow((double)1.1f, (double)Lvl);
+            if (Xp > neededXp)
+            {
+                Xp -= (int)neededXp;
+
+                Health = (int)(100 * Math.Pow((double)1.1f, (double)Lvl));
+                AttackPower = (int)(10 * Math.Pow((double)1.1f, (double)Lvl));
+
+                Lvl++;
+            }
+            Debug.WriteLine(Xp);
+            Debug.WriteLine("HP" + Health);
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace PokeLike2
         {
             if(other.Type is Player)
             {
-                Player.Health += 10;
+                Player.Health += 20;
 
                 GameManager.Destroy(this);
                 CollisionManager.Destroy(collider);

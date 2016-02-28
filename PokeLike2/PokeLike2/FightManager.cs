@@ -51,6 +51,7 @@ namespace PokeLike2
                 }
                 else
                 {
+                    Player.Xp += pokemon.AttackPower * pokemon.Defense;
                     GameManager.Destroy(pokemon);
                     CollisionManager.Destroy(pokemon.collider);
                 }
@@ -68,11 +69,12 @@ namespace PokeLike2
                 }
                 else
                 {
+                    Player.Xp += pokemon.AttackPower * pokemon.Defense;
                     GameManager.Destroy(pokemon);
                     CollisionManager.Destroy(pokemon.collider);
                 }
-
             }
+            Player.CheckAndDoLvlUp();
         }
     }
 }

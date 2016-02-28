@@ -12,8 +12,6 @@ namespace PokeLike2
         public int Health;
         public int Defense;
         public int AttackPower;
-        public int Lvl;
-        public double Xp;
         public string Element;
         public int Init;
         public bool Movement;
@@ -26,7 +24,7 @@ namespace PokeLike2
         private Color color = Color.White;
         private int movementCooldown;
 
-        public Pokemon(Vector2 position, string texture, string name, int health, int defense, int attackPower, int lvl, int xp, int init, string element, bool movement)
+        public Pokemon(Vector2 position, string texture, string name, int health, int defense, int attackPower, int xp, int init, string element, bool movement)
         {
             this.Position = position;
             this.Sprite = GameManager.Content.Load<Texture2D>(texture);
@@ -34,8 +32,6 @@ namespace PokeLike2
             this.Health = health;
             this.Defense = defense;
             this.AttackPower = attackPower;
-            this.Lvl = lvl;
-            this.Xp = xp;
             this.Element = element;
             this.Init = init;
             this.Movement = movement;
@@ -78,16 +74,6 @@ namespace PokeLike2
                     collider.X = (int)Position.X;
                     collider.Y = (int)Position.Y;
                 }
-            }
-        }
-
-        private void CheckAndDoLvlUp()
-        {
-            double neededXp = 100 * Math.Pow((double)1.1f, (double)Lvl);
-            if (Xp > neededXp)
-            {
-                Xp -= neededXp;
-                Lvl++;
             }
         }
 
