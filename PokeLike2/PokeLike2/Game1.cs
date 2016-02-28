@@ -9,9 +9,17 @@ namespace PokeLike2
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        private Player player;
+        public static UITexture DialogBox;
+        public static UILabel Message;
+
+
+        private Player player; 
         private Camera camera = new Camera();
         private UILabel healthBar;
+        private Pokemon bisasam;
+        private SpriteAnimation trainer;
+        private Potion potion;
+        private Potion potion2;
 
         public Game1()
         {
@@ -36,13 +44,28 @@ namespace PokeLike2
             map.LoadMapFromImage(Content.Load<Texture2D>("Map"));
             GameManager.AddGameObject(map);
 
-            player = new Player(new Vector2(17,12));
+            player = new Player(new Vector2(17, 12));
             GameManager.AddGameObject(player);
 
+            trainer = new SpriteAnimation("player", Content.Load<Texture2D>("playerMovement"), Content.RootDirectory + "/playerMovement.xml");
+
+            player.SpriteAnimation = trainer;
+            player.SpriteAnimation.FrameDelay = 200;
+            
             camera.SetTarget(player);
 
             // UI
             healthBar = new UILabel(Fonts.Arial, new Vector2(camera.X, camera.Y), ("HP: " + Player.Health.ToString() + ""), 0.5f, Color.Black);
+            DialogBox = new UITexture(new Vector2(camera.X, camera.Y), Color.White, "800x120_gray");
+
+            //Pokemons
+            bisasam = new Pokemon(new Vector2( 3, 3 ), "Bisasam", "bisasam1", 220, 5, 95, 1, 0, 2, "plant", true);
+            bisasam = new Pokemon(new Vector2(30, 9 ), "Bisasam", "bisasam2", 20, 5, 5, 1, 0, 2, "plant", false);
+            bisasam = new Pokemon(new Vector2(30, 10), "Bisasam", "bisasam3", 20, 5, 5, 1, 0, 2, "plant", false);
+
+            //Items
+            potion = new Potion(new Vector2(1, 1), Content.RootDirectory + "/items.xml", "ArmorChainMail");
+            potion2 = new Potion(new Vector2(2, 2), Content.RootDirectory + "/items.xml", "ArmorChainmailGolden");
         }
 
         protected override void UnloadContent()
@@ -54,14 +77,17 @@ namespace PokeLike2
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            InputManager.Update();
             GameManager.Update(gameTime);
             CollisionManager.Update();
             UIManager.Update(gameTime);
 
             //UI
             int windowWidth = 25 * Constant.TileSize;
+            int windowHeight = 15 * Constant.TileSize;
             healthBar.Position = new Vector2(camera.X + windowWidth * 0.81f, camera.Y); // Updatet die Position der Healthbar in Abhängigkeit zur Kamera
             healthBar.Text = "HP: " + Player.Health.ToString() + "";
+            DialogBox.Position = new Vector2(camera.X, camera.Y + windowHeight * 0.75f);
             base.Update(gameTime);
         }
 
@@ -81,5 +107,7 @@ namespace PokeLike2
 
             base.Draw(gameTime);
         }
+
+        
     }
 }

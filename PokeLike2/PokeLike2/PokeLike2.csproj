@@ -38,15 +38,23 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Armor.cs" />
     <Compile Include="BoxCollider.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="CollisionManager.cs" />
     <Compile Include="Constant.cs" />
-    <Compile Include="Content\Fonts.cs" />
+    <Compile Include="FightManager.cs" />
+    <Compile Include="Fonts.cs" />
     <Compile Include="GameManager.cs" />
     <Compile Include="GameObject.cs" />
+    <Compile Include="InputManager.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="Pokemon.cs" />
+    <Compile Include="Potion.cs" />
+    <Compile Include="SpriteAnimation.cs" />
+    <Compile Include="SpriteFrame.cs" />
     <Compile Include="Tile.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
@@ -54,6 +62,7 @@
     <Compile Include="UIElement.cs" />
     <Compile Include="UILabel.cs" />
     <Compile Include="UIManager.cs" />
+    <Compile Include="UITexture.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="OpenTK">
@@ -66,13 +75,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\800x120_gray.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Bisasam.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Items.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\items.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Map.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Peter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\playerMovement.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\playerMovement.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\pokemons.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Tileset2.png">

@@ -9,6 +9,8 @@ namespace PokeLike2
 {
     public abstract class UIElement
     {
+        public bool Show;
+
         public UIElement()
         {
             UIManager.AddElement(this);

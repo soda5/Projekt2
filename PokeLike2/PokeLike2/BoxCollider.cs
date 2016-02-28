@@ -11,12 +11,16 @@ namespace PokeLike2
         public int Y;
         public int Width;
         public int Height;
+        public GameObject Type;
 
-        public delegate void CollisionEvent();
-        public event CollisionEvent OnCollision;
+        public delegate void CollisionEvent(BoxCollider other);
+        public event CollisionEvent OnCollisionStay, OnCollisionEnter, OnCollisionExit;
 
-        public BoxCollider(int x, int y, int width, int height)
+        private List<BoxCollider> collidingColliders = new List<BoxCollider>();
+
+        public BoxCollider(GameObject type, int x, int y, int width, int height)
         {
+            this.Type = type;
             this.X = x;
             this.Y = y;
             this.Width = width;
@@ -27,12 +31,38 @@ namespace PokeLike2
 
         public void CheckCollision(BoxCollider other)
         {
+            bool collision = false;
+
             if (X + Width <= other.X || other.X + other.Width <= X || Y + Height <= other.Y || other.Y + other.Height <= Y)
-                return;
+                collision = true;
+            else
+                collision = false;
 
-            if (OnCollision != null)
-                OnCollision();
+            if(!collision)
+            {
+                if(!collidingColliders.Contains(other))
+                {
+                    collidingColliders.Add(other);
 
+                    if (OnCollisionEnter != null)
+                        OnCollisionEnter(other);
+                }
+                else
+                {
+                    if (OnCollisionStay != null)
+                        OnCollisionStay(other);
+                }
+            }
+            else
+            {
+                if(collidingColliders.Contains(other))
+                {
+                    collidingColliders.Remove(other);
+
+                    if (OnCollisionExit != null)
+                        OnCollisionExit(other);
+                }
+            }
         }
     }
 }

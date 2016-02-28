@@ -1,0 +1,14 @@
+<TextureAtlas imagePath="sprites.png" width="64" height="128">
+	<sprite n="player_Up_01.png" x="0" y="0" width="32" height="32"/>
+	<sprite n="player_Up_02.png" x="32" y="0" width="32" height="32"/>
+	<sprite n="player_Up_03.png" x="64" y="0" width="32" height="32"/>
+	<sprite n="player_Down_01.png" x="0" y="64" width="32" height="32"/>
+	<sprite n="player_Down_02.png" x="32" y="64" width="32" height="32"/>
+	<sprite n="player_Down_03.png" x="64" y="64" width="32" height="32"/>
+	<sprite n="player_Left_01.png" x="0" y="32" width="32" height="32"/>
+	<sprite n="player_Left_02.png" x="32" y="32" width="32" height="32"/>
+	<sprite n="player_Left_03.png" x="64" y="32" width="32" height="32"/>
+	<sprite n="player_Right_01.png" x="0" y="96" width="32" height="32"/>
+	<sprite n="player_Right_02.png" x="32" y="96" width="32" height="32"/>
+	<sprite n="player_Right_03.png" x="64" y="96" width="32" height="32"/>
+</TextureAtlas>

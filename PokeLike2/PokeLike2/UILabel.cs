@@ -26,10 +26,8 @@ namespace PokeLike2
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(Font, Text, Position, Color, 0f, Vector2.Zero, Scale, SpriteEffects.None, 0f);
+                spriteBatch.DrawString(Font, Text, Position, Color, 0f, Vector2.Zero, Scale, SpriteEffects.None, 0f);
         }
-
-
     }
 }
 
