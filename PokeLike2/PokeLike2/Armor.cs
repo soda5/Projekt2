@@ -1,6 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿// Copyright (c) 2016 Mischa Ahi
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -19,10 +21,13 @@ namespace PokeLike2
             {
                 Player.Defense += 1;
 
-                Game1.DialogBox.Show = true;
-
                 GameManager.Destroy(this);
                 CollisionManager.Destroy(collider);
+
+                if(Game1.DebugMode == true)
+                {
+                    Debug.Write("Deine Rüstung hat sich um 1 erhöht");
+                }
             }
         }
     }

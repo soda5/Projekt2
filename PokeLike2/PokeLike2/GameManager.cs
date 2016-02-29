@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Copyright (c) 2016 Mischa Ahi
+using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;

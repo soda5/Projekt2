@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Copyright (c) 2016 Mischa Ahi
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,7 @@ namespace PokeLike2
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if(Show)
+            if(Show) // should it be drawn?
                 spriteBatch.Draw(Texture, Position, Color);
         }
     }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿// Copyright (c) 2016 Mischa Ahi
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -47,7 +48,7 @@ namespace PokeLike2
 
         private void LoadTextures()
         {
-            tileset = GameManager.LoadTexture2D("Tileset2");
+            tileset = GameManager.LoadTexture2D("tileset");
         }
 
         public void LoadMapFromImage(Texture2D image)
@@ -85,25 +86,26 @@ namespace PokeLike2
         }
 
         private Tile GetTileByType(Color color)
-        {
-            if (color == new Color(0, 0, 0)) // Rand
-                return new Tile(1, 0, false); // Spalte 1, Zeile 0
-            else if (color == new Color(255, 255, 255)) // Rasen
-                return new Tile(1, 1, true);
-            else if (color == new Color(255, 0, 0))// Normales Haus linke Hälfte
-                return new Tile(5, 0, false);
-            else if (color == new Color(0, 255, 0))// Normales Haus rechte Hälfte
-                return new Tile(6, 0, false);
-            else if (color == new Color(0, 0, 255)) // Center Dach rechts
-                return new Tile(4, 2, false);
-            else if (color == new Color(255, 255, 0))// Center Dach rechts  
-                return new Tile(3, 2, false);
-            else if (color == new Color(255, 0, 255)) // Center tür
-                return new Tile(10, 7, false);
-            else if (color == new Color(0, 255, 255)) // pokecenter
-                return new Tile(4, 8, false);
-            else if (color == new Color(192, 32, 0)) // markt
-                return new Tile(5, 8, false);
+        { // columns and rows example: new Tile(1, 0, false) means column 2 and row 1 on the Spritesheet
+
+            if (color == new Color(0, 0, 0)) // map edge tree
+                return new Tile(1, 0, false); 
+            else if (color == new Color(255, 255, 255)) // lawn
+                return new Tile(4, 1, true);
+            else if (color == new Color(255, 0, 0))// NPC left-detached house
+                return new Tile(2, 1, false);
+            else if (color == new Color(0, 255, 0))// NPC right-detached house
+                return new Tile(3, 1, false);
+            else if (color == new Color(0, 0, 255)) // center/market left roof
+                return new Tile(2, 0, false);
+            else if (color == new Color(255, 255, 0))// center/market right roof  
+                return new Tile(3, 0, false);
+            else if (color == new Color(255, 0, 255)) // center/market door
+                return new Tile(4, 0, false);
+            else if (color == new Color(0, 255, 255)) // center text
+                return new Tile(0, 4, false);
+            else if (color == new Color(192, 32, 0)) // market text
+                return new Tile(1, 4, false);
             else
                 return null;
         }

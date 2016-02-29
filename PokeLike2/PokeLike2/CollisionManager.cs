@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Copyright (c) 2016 Mischa Ahi
+using System;
 using System.Collections.Generic;
 
 namespace PokeLike2
@@ -26,7 +27,6 @@ namespace PokeLike2
         public static void Destroy(BoxCollider boxCollider)
         {
             deletedColliders.Add(boxCollider);
-
         }
 
         private static void CheckCollisions()

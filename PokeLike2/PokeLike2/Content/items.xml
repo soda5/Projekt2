@@ -1,3 +1,6 @@
+<!--
+Sample license text.
+-->
 <TextureAtlas imagePath="sprites.png" width="256" height="256">
 	<sprite n="ArmorChainMail.PNG" x="32" y="224" width="32" height="32"/>
 	<sprite n="ArmorChainmailGolden.PNG" x="32" y="192" width="32" height="32"/>

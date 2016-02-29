@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿// Copyright (c) 2016 Mischa Ahi
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace PokeLike2
         public string Name { get; private set; }
         public int FrameDelay { get; set; }
         public Texture2D SpriteAtlas { get; private set; }
-        public SpriteFrame CurrentFrame;// { get; private set; }
+        public SpriteFrame CurrentFrame;
         public SpriteFrame LastFrame;
 
         private string currentAnimationName;
@@ -32,7 +33,7 @@ namespace PokeLike2
 
         public void Update(GameTime gameTime)
         {
-            UpdateAnimationFrame(gameTime);
+            UpdateCurrentAnimationFrame(gameTime);
         }
 
         public void PlayAnimation(string name)
@@ -49,7 +50,7 @@ namespace PokeLike2
             }
         }
 
-        private void UpdateAnimationFrame(GameTime gameTime)
+        private void UpdateCurrentAnimationFrame(GameTime gameTime)
         {
             timer += gameTime.ElapsedGameTime.Milliseconds;
 

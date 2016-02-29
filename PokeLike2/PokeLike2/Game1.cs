@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿// Copyright (c) 2016 Mischa Ahi
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -11,13 +12,13 @@ namespace PokeLike2
 
         public static UITexture DialogBox;
         public static UILabel Message;
-
+        public static bool DebugMode = false;
 
         private Player player; 
         private Camera camera = new Camera();
         private UILabel healthBar;
         private Pokemon bisasam;
-        private SpriteAnimation trainer;
+        private SpriteAnimation playerAnimation;
         private Potion potion;
         private Potion potion2;
 
@@ -30,8 +31,6 @@ namespace PokeLike2
         protected override void Initialize()
         {
             base.Initialize();
-
-            //IsMouseVisible = true;
         }
 
         protected override void LoadContent()
@@ -47,9 +46,9 @@ namespace PokeLike2
             player = new Player(new Vector2(17, 12));
             GameManager.AddGameObject(player);
 
-            trainer = new SpriteAnimation("player", Content.Load<Texture2D>("playerMovement"), Content.RootDirectory + "/playerMovement.xml");
+            playerAnimation = new SpriteAnimation("player", Content.Load<Texture2D>("playerMovement"), Content.RootDirectory + "/playerMovement.xml");
 
-            player.SpriteAnimation = trainer;
+            player.SpriteAnimation = playerAnimation;
             player.SpriteAnimation.FrameDelay = 200;
             
             camera.SetTarget(player);
@@ -59,13 +58,18 @@ namespace PokeLike2
             DialogBox = new UITexture(new Vector2(camera.X, camera.Y), Color.White, "800x120_gray");
 
             //Pokemons
-            bisasam = new Pokemon(new Vector2( 3, 3 ), "Bisasam", "bisasam1", 220, 5, 95, 1, 0, 2, "plant", true);
-            bisasam = new Pokemon(new Vector2(30, 9 ), "Bisasam", "bisasam2", 20, 5, 5, 1, 0, 2, "plant", false);
-            bisasam = new Pokemon(new Vector2(30, 10), "Bisasam", "bisasam3", 20, 5, 5, 1, 0, 2, "plant", false);
+            bisasam = new Pokemon(new Vector2( 3, 3 ), "Bisasam", "bisasam1", 120, 5, 10, 0, 2, "plant", true);
+            bisasam = new Pokemon(new Vector2(31, 9 ), "Bisasam", "bisasam2", 20, 5, 5, 0, 2, "plant", false);
+            bisasam = new Pokemon(new Vector2(32, 9 ), "Bisasam", "bisasam3", 20, 5, 5, 0, 2, "plant", false);
+            bisasam = new Pokemon(new Vector2(32, 10 ), "Bisasam", "bisasam4", 20, 5, 5, 0, 2, "plant", false);
+            bisasam = new Pokemon(new Vector2(31, 10), "Bisasam", "bisasam5", 20, 5, 5, 0, 2, "plant", false);
+            bisasam = new Pokemon(new Vector2(30, 9 ), "Bisasam", "bisasam6", 20, 5, 5, 0, 2, "plant", false);
+            bisasam = new Pokemon(new Vector2(30, 10), "Bisasam", "bisasam7", 20, 5, 5, 0, 2, "plant", false);
+            bisasam = new Pokemon(new Vector2(14, 19), "Bisasam", "bisasam8", 20, 5, 5, 0, 2, "plant", false);
 
             //Items
-            potion = new Potion(new Vector2(1, 1), Content.RootDirectory + "/items.xml", "ArmorChainMail");
-            potion2 = new Potion(new Vector2(2, 2), Content.RootDirectory + "/items.xml", "ArmorChainmailGolden");
+            potion = new Potion(new Vector2(1, 1), Content.RootDirectory + "/items.xml", "PotionRed");
+            potion2 = new Potion(new Vector2(30, 12), Content.RootDirectory + "/items.xml", "PotionRed");
         }
 
         protected override void UnloadContent()
@@ -107,7 +111,5 @@ namespace PokeLike2
 
             base.Draw(gameTime);
         }
-
-        
     }
 }
