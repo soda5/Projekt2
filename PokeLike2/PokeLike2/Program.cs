@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Copyright (c) 2016 Mischa Ahi
+using System;
 
 namespace PokeLike2
 {

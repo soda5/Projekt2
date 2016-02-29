@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Copyright (c) 2016 Mischa Ahi
+using System;
 using Microsoft.Xna.Framework.Input;
 
 namespace PokeLike2

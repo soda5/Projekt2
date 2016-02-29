@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿// Copyright (c) 2016 Mischa Ahi
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -11,7 +12,7 @@ namespace PokeLike2
 
         public static UITexture DialogBox;
         public static UILabel Message;
-
+        public static bool DebugMode = false;
 
         private Player player; 
         private Camera camera = new Camera();

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿// Copyright (c) 2016 Mischa Ahi
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -122,6 +123,15 @@ namespace PokeLike2
             {
                 RestartGame();
             }
+
+            if (key == Keys.Space && Game1.DebugMode == false)
+            {
+                Game1.DebugMode = true;
+            }
+            else if (key == Keys.Space && Game1.DebugMode == true)
+            {
+                Game1.DebugMode = false;
+            }
         }
 
         private void Move(Vector2 direction)
@@ -190,8 +200,11 @@ namespace PokeLike2
 
                 Lvl++;
             }
-            Debug.WriteLine(Xp);
-            Debug.WriteLine("HP" + Health);
+            if(Game1.DebugMode == true)
+            {
+                Debug.WriteLine("XP: " + Xp);
+                Debug.WriteLine("HP: " + Health);
+            }
         }
     }
 }
