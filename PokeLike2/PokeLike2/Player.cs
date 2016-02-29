@@ -199,8 +199,12 @@ namespace PokeLike2
                 AttackPower = (int)(10 * Math.Pow((double)1.1f, (double)Lvl));
 
                 Lvl++;
+                if (Game1.DebugMode == true)
+                {
+                    Debug.WriteLine("Sie sind ein Level aufgestiegen! Ihr Aktuelles Level ist nun: " + Lvl);
+                }
             }
-            if(Game1.DebugMode == true)
+            if (Game1.DebugMode == true)
             {
                 Debug.WriteLine("XP: " + Xp);
                 Debug.WriteLine("HP: " + Health);

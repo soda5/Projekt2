@@ -62,12 +62,12 @@ namespace PokeLike2
             //Pokemons
             bisasam = new Pokemon(new Vector2( 3, 3 ), "Bisasam", "bisasam1", 120, 5, 10, 0, 2, "plant", true);
             bisasam = new Pokemon(new Vector2(31, 9 ), "Bisasam", "bisasam2", 20, 5, 5, 0, 2, "plant", false);
-            bisasam = new Pokemon(new Vector2(32, 9 ), "Bisasam", "bisasam2", 20, 5, 5, 0, 2, "plant", false);
-            bisasam = new Pokemon(new Vector2(32, 10 ), "Bisasam", "bisasam2", 20, 5, 5, 0, 2, "plant", false);
-            bisasam = new Pokemon(new Vector2(31, 10), "Bisasam", "bisasam2", 20, 5, 5, 0, 2, "plant", false);
-            bisasam = new Pokemon(new Vector2(30, 9 ), "Bisasam", "bisasam2", 20, 5, 5, 0, 2, "plant", false);
-            bisasam = new Pokemon(new Vector2(30, 10), "Bisasam", "bisasam3", 20, 5, 5, 0, 2, "plant", false);
-            bisasam = new Pokemon(new Vector2(14, 19), "Bisasam", "bisasam2", 20, 5, 5, 0, 2, "plant", false);
+            bisasam = new Pokemon(new Vector2(32, 9 ), "Bisasam", "bisasam3", 20, 5, 5, 0, 2, "plant", false);
+            bisasam = new Pokemon(new Vector2(32, 10 ), "Bisasam", "bisasam4", 20, 5, 5, 0, 2, "plant", false);
+            bisasam = new Pokemon(new Vector2(31, 10), "Bisasam", "bisasam5", 20, 5, 5, 0, 2, "plant", false);
+            bisasam = new Pokemon(new Vector2(30, 9 ), "Bisasam", "bisasam6", 20, 5, 5, 0, 2, "plant", false);
+            bisasam = new Pokemon(new Vector2(30, 10), "Bisasam", "bisasam7", 20, 5, 5, 0, 2, "plant", false);
+            bisasam = new Pokemon(new Vector2(14, 19), "Bisasam", "bisasam8", 20, 5, 5, 0, 2, "plant", false);
 
             //Items
             potion = new Potion(new Vector2(1, 1), Content.RootDirectory + "/items.xml", "PotionRed");
