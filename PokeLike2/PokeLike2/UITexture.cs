@@ -23,7 +23,7 @@ namespace PokeLike2
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if(Show)
+            if(Show) // should it be drawn?
                 spriteBatch.Draw(Texture, Position, Color);
         }
     }

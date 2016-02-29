@@ -86,24 +86,25 @@ namespace PokeLike2
         }
 
         private Tile GetTileByType(Color color)
-        {
-            if (color == new Color(0, 0, 0)) // Rand
-                return new Tile(1, 0, false); // Spalte 1, Zeile 0
-            else if (color == new Color(255, 255, 255)) // Rasen
+        { // columns and rows example: new Tile(1, 0, false) means column 2 and row 1 on the Spritesheet
+
+            if (color == new Color(0, 0, 0)) // map edge tree
+                return new Tile(1, 0, false); 
+            else if (color == new Color(255, 255, 255)) // lawn
                 return new Tile(4, 1, true);
-            else if (color == new Color(255, 0, 0))// Normales Haus linke Hälfte
+            else if (color == new Color(255, 0, 0))// NPC left-detached house
                 return new Tile(2, 1, false);
-            else if (color == new Color(0, 255, 0))// Normales Haus rechte Hälfte
+            else if (color == new Color(0, 255, 0))// NPC right-detached house
                 return new Tile(3, 1, false);
-            else if (color == new Color(0, 0, 255)) // Center Dach rechts
+            else if (color == new Color(0, 0, 255)) // center/market left roof
                 return new Tile(2, 0, false);
-            else if (color == new Color(255, 255, 0))// Center Dach rechts  
+            else if (color == new Color(255, 255, 0))// center/market right roof  
                 return new Tile(3, 0, false);
-            else if (color == new Color(255, 0, 255)) // Center tür
+            else if (color == new Color(255, 0, 255)) // center/market door
                 return new Tile(4, 0, false);
-            else if (color == new Color(0, 255, 255)) // pokecenter
+            else if (color == new Color(0, 255, 255)) // center text
                 return new Tile(0, 4, false);
-            else if (color == new Color(192, 32, 0)) // markt
+            else if (color == new Color(192, 32, 0)) // market text
                 return new Tile(1, 4, false);
             else
                 return null;

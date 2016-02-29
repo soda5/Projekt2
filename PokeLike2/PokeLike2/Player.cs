@@ -22,17 +22,13 @@ namespace PokeLike2
         public static int Lvl = 1;
         public static int Xp = 0;
 
-        private Texture2D sprite;
-
+        private int framesTillLastMove;
+        private int movementCooldown = 13;
         private string SpriteAnimationDirection = "player_Down";
-
-        private static UILabel deathMessage;
-
+        private Texture2D sprite;
         private BoxCollider collider;
-
-        private int movementCooldown;
-
         private Map map;
+        private static UILabel deathMessage;
         
         public Player(Vector2 position)
         {
@@ -53,8 +49,6 @@ namespace PokeLike2
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(SpriteAnimation.SpriteAtlas, Position * 32, SpriteAnimation.CurrentFrame.Bounds, Color.White);
-
-           // spriteBatch.Draw(Items.ItemAtlas, Items.Position * 32, Items.CurrentItem.Bounds, Color.White);
         }
 
         public override void Update(GameTime gameTime)
@@ -62,7 +56,7 @@ namespace PokeLike2
             SpriteAnimation.PlayAnimation(SpriteAnimationDirection);
             SpriteAnimation.Update(gameTime);
 
-            movementCooldown++;
+            framesTillLastMove++;
         }
 
         public static void Death()
@@ -150,11 +144,11 @@ namespace PokeLike2
 
         private bool InternalMovementCooldown()
         {
-            if (movementCooldown < 13)
+            if (framesTillLastMove < movementCooldown)
                 return false;
             else
             {
-                movementCooldown = 0;
+                framesTillLastMove = 0;
                 return true;
             }
         }

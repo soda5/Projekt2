@@ -14,10 +14,9 @@ namespace PokeLike2
         public float Y;
 
         private Player player;
-
         private float ViewMargin = 0.5f;
-        float cameraTranslationX = 0;
-        float cameraTranslationY = 0;
+        private float cameraTranslationX = 0;
+        private float cameraTranslationY = 0;
 
         public void SetTarget(Player player)
         {
@@ -62,5 +61,4 @@ namespace PokeLike2
             Y = MathHelper.Clamp(Y + cameraTranslationY, 0f, Constant.MapHeight * Constant.TileSize - viewport.Height);
         }
     }
-    }
-
+}

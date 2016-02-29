@@ -27,7 +27,6 @@ namespace PokeLike2
         public static void Destroy(BoxCollider boxCollider)
         {
             deletedColliders.Add(boxCollider);
-
         }
 
         private static void CheckCollisions()

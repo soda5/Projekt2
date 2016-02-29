@@ -18,12 +18,12 @@ namespace PokeLike2
         public bool Movement;
 
         public BoxCollider collider;
-
         public Vector2 Position { get; private set; }
         public Texture2D Sprite { get; private set; }
 
+        private int framesTillLastMove;
+        private int movementCooldown = 13;
         private Color color = Color.White;
-        private int movementCooldown;
 
         public Pokemon(Vector2 position, string texture, string name, int health, int defense, int attackPower, int xp, int init, string element, bool movement)
         {
@@ -56,7 +56,7 @@ namespace PokeLike2
 
         private void OnCollisionEnter(BoxCollider other)
         {
-            if (GameManager.GameState == "move" && other.Type is Player)
+            if (GameManager.GameState == "move" && other.Type is Player) // To prevent pokemon from fighting each other
                 FightManager.Fight(this);
         }
 
@@ -67,7 +67,7 @@ namespace PokeLike2
 
             if (targetTile.IsPassable)
             {
-                movementCooldown++;
+                framesTillLastMove++;
                 if (Movement && InternalMovementCooldown())
                 {
                     Position += RandomMove();
@@ -80,17 +80,19 @@ namespace PokeLike2
 
         private bool InternalMovementCooldown()
         {
-            if (movementCooldown < 13)
+            // so that the pokemon can move only after a certain number of frames
+            if (framesTillLastMove < movementCooldown)
                 return false;
             else
             {
-                movementCooldown = 0;
+                framesTillLastMove = 0;
                 return true;
             }
         }
 
         private Vector2 RandomMove()
         {
+            // The Pokemon is forced to move in any direction everytime it moves, it cannot stand
             Random random = new Random();
 
             if (random.Next(0, 4) == 0)

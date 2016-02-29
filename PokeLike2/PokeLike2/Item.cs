@@ -12,11 +12,10 @@ namespace PokeLike2
     class Item : GameObject
     {
         public BoxCollider collider;
-
         public Vector2 Position;
         public Texture2D ItemAtlas;
-
         public SpriteFrame CurrentItem;
+
         public List<SpriteFrame> ItemsToDraw = new List<SpriteFrame>();
 
         private List<SpriteFrame> allItems = new List<SpriteFrame>();
@@ -38,7 +37,8 @@ namespace PokeLike2
         }
 
         public void SetFrame(string name)
-        {
+        { 
+            // name is assigned
             CurrentItem = allItems.Find(animationFrame => animationFrame.Name.Contains(name));
             ItemsToDraw.Add(CurrentItem);
         }

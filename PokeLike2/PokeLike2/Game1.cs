@@ -18,7 +18,7 @@ namespace PokeLike2
         private Camera camera = new Camera();
         private UILabel healthBar;
         private Pokemon bisasam;
-        private SpriteAnimation trainer;
+        private SpriteAnimation playerAnimation;
         private Potion potion;
         private Potion potion2;
 
@@ -31,8 +31,6 @@ namespace PokeLike2
         protected override void Initialize()
         {
             base.Initialize();
-
-            //IsMouseVisible = true;
         }
 
         protected override void LoadContent()
@@ -48,9 +46,9 @@ namespace PokeLike2
             player = new Player(new Vector2(17, 12));
             GameManager.AddGameObject(player);
 
-            trainer = new SpriteAnimation("player", Content.Load<Texture2D>("playerMovement"), Content.RootDirectory + "/playerMovement.xml");
+            playerAnimation = new SpriteAnimation("player", Content.Load<Texture2D>("playerMovement"), Content.RootDirectory + "/playerMovement.xml");
 
-            player.SpriteAnimation = trainer;
+            player.SpriteAnimation = playerAnimation;
             player.SpriteAnimation.FrameDelay = 200;
             
             camera.SetTarget(player);
@@ -113,7 +111,5 @@ namespace PokeLike2
 
             base.Draw(gameTime);
         }
-
-        
     }
 }

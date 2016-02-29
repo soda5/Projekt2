@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 
 namespace PokeLike2
-{
+{ // This is a map tile
     class Tile
     {
         public int PositionX;

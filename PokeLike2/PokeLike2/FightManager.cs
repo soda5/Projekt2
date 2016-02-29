@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2016 Mischa Ahi
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -15,7 +16,8 @@ namespace PokeLike2
                 if (pokemon.Defense - Player.AttackPower * 2 < 0)
                     pokemon.Health += pokemon.Defense - Player.AttackPower * 2;
                 else
-                    Console.WriteLine("Deine Angriffskraft ist zu niedrig um Schaden zu verursachen.");// unvollständig
+                    if (Game1.DebugMode == true)
+                        Debug.WriteLine("Deine Angriffskraft ist zu niedrig um Schaden zu verursachen.");
             }
         }
 
@@ -31,14 +33,14 @@ namespace PokeLike2
                         Player.Health = 0;
                 }
                 else
-                {
-                    Console.WriteLine("Die Angriffskraft des Gegners ist zu niedrig um Schaden zu verursachen.");// unvollständig
-                }
+                    if(Game1.DebugMode == true)
+                        Debug.WriteLine("Die Angriffskraft des Gegners ist zu niedrig um Schaden zu verursachen.");
             }
         }
 
         public static void Fight(Pokemon pokemon)
-        {
+        { 
+            // Fight between Player and any Enemy
             if (Player.Init >= pokemon.Init)
             {
                 while (Player.Health > 0 && pokemon.Health > 0)
@@ -46,7 +48,7 @@ namespace PokeLike2
                     PlayerAttacksEnemy(pokemon);
                     EnemyAttacksPlayer(pokemon);
                 }
-                if(Player.Health < 1)
+                if (Player.Health < 1)
                 {
                     Player.Death();
                 }
